@@ -36,27 +36,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("販売価格を入力してください")
       end
       it 'カテゴリーを入力しないと登録できない' do
-        @item.category_id = ''
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("カテゴリーを入力してください")
       end
       it '商品の状態を入力しないと登録できない' do
-        @item.condition_id = ''
+        @item.condition_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("商品の状態を入力してください")
       end
       it '配送料の負担を入力しないと登録できない' do
-        @item.payment_id = ''
+        @item.payment_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("配送料の負担を入力してください")
       end
       it '発送元の地域を入力しないと登録できない' do
-        @item.prefecture_id = ''
+        @item.prefecture_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("発送元の地域を入力してください")
       end
       it '配送までの日数を入力しないと登録できない' do
-        @item.derivery_day_id = ''
+        @item.derivery_day_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("発送までの日数を入力してください")
       end
@@ -84,6 +84,11 @@ RSpec.describe Item, type: :model do
         @item.price = 'ああああああ'
         @item.valid?
         expect(@item.errors.full_messages).to include("販売価格は数値で入力してください")
+      end
+      it 'userが紐づいていないと保存できない'do
+       @item.user = nil
+       @item.valid?
+       expect(@item.errors.full_messages).to include("Userを入力してください")
       end
     end
   end
