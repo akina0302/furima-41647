@@ -19,6 +19,7 @@ ja:
      signed_out: "ログアウトしました"
     failure:
       invalid: "ログイン情報が正しくありません"
+      unauthenticated: " "
   attributes:
     item: 
     image: 商品画像
