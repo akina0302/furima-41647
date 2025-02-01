@@ -19,3 +19,15 @@ ja:
      signed_out: "ログアウトしました"
     failure:
       invalid: "ログイン情報が正しくありません"
+      unauthenticated: " "
+  attributes:
+    item: 
+    image: 商品画像
+    item_name: 商品名
+    description: 商品の説明
+    price: 販売価格
+    category_id: カテゴリー
+    condition_id: 商品の状態
+    payment_id: 配送料の負担
+    prefecture_id: 発送元の地域
+    derivery_day_id: 発送までの日数
