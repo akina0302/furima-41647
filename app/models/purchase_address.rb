@@ -11,7 +11,7 @@ class PurchaseAddress
   def save
     # 各テーブルにデータを保存する処理を書く
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
-    Address.create(post_code: post_code,prefecture_id: prefecture_id,cities: cities,housenumber: housenumber.build: build,tel: tel,purchases: purchase.id)
+    Address.create(post_code: post_code,prefecture_id: prefecture_id,cities: cities,housenumber: housenumber,build: build,tel: tel,purchases: purchase.id)
   end
 end
 
