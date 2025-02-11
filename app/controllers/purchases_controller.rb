@@ -7,12 +7,13 @@ class PurchasesController < ApplicationController
 
   def create
    @purchase_address = PurchaseAddress.new(purchases_params)
+   @item = Item.find(params[:item_id])
    if @purchase_address.valid?
     @purchase_address.save
     redirect_to root_path
    else
     puts @purchase_address.errors.full_messages
-    render :index, status: :unprocessable_entity
+    render :index , status: :unprocessable_entity
    end
   end
 

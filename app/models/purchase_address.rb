@@ -2,10 +2,10 @@ class PurchaseAddress
   include ActiveModel::Model
   attr_accessor :post_code,:prefecture_id,:cities,:housenumber,:build ,:tel, :user_id, :item_id
 
-  validates :post_code, presence: true
+  validates :post_code, presence: true ,format:{with:/\A[0-9]{3}-[0-9]{4}\z/}
   validates :cities, presence: true
   validates :housenumber, presence: true
-  validates :tel, presence: true
+  validates :tel, presence: true,format:{with:/\A[0-9]{10,11}\z/}
   validates :prefecture_id, presence: true , numericality: { other_than: 1 , message: "を入力してください"}
   validates :user_id, presence: true
 
