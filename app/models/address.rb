@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :purchas
+  belongs_to :purchase
   # validates :post_code, presence: true
   # validates :cities, presence: true
   # validates :housenumber, presence: true
