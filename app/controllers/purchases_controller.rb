@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @item = Item.find(params[:item_id])
     if current_user == @item.user
     redirect_to root_path
@@ -20,6 +21,7 @@ class PurchasesController < ApplicationController
     redirect_to root_path
    else
     puts @purchase_address.errors.full_messages
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     render :index , status: :unprocessable_entity
    end
   end
