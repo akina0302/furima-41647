@@ -4,7 +4,8 @@ class PurchasesController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @item = Item.find(params[:item_id])
-    if current_user == @item.user
+
+    if current_user == @item.user || @item.purchase.presence
     redirect_to root_path
     else
     @purchase_address = PurchaseAddress.new
