@@ -50,7 +50,9 @@ class ItemsController < ApplicationController
   end
 
   def login_user
-    unless @item.user == current_user
+    if @item.user != current_user 
+      redirect_to root_path
+    elsif @item.purchase.present?
       redirect_to root_path
     end
   end
