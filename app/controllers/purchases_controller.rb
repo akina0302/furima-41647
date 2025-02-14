@@ -1,11 +1,10 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item ,only:[:index,:create]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
-
-    if current_user == @item.user || @item.purchase.presence
+       if current_user == @item.user || @item.purchase.presence
     redirect_to root_path
     else
     @purchase_address = PurchaseAddress.new
@@ -15,8 +14,7 @@ class PurchasesController < ApplicationController
 
   def create
    @purchase_address = PurchaseAddress.new(purchases_params)
-   @item = Item.find(params[:item_id])
-   if @purchase_address.valid?
+    if @purchase_address.valid?
     pay_item
     @purchase_address.save
     redirect_to root_path
@@ -41,4 +39,9 @@ class PurchasesController < ApplicationController
         currency: 'jpy'  #通貨の種類(日本円)
       )
   end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
 end
