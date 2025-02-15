@@ -1,41 +1,31 @@
 ja:
   activerecord:
-    models:
-    user: ユーザー
-  attributes:
-    user: 
-    nickname: ニックネーム
-    email: メールアドレス
-    password: パスワード
-    first_name: お名前（姓）
-    last_name: お名前（名）
-    first_name_furigana : お名前カナ（姓）
-    last_name_furigana : お名前カナ（名）
-    birth_date: 生年月日
-  devise:
-    sessions:
-     user:
-      signed_out: "ログアウトしました"
-     signed_out: "ログアウトしました"
-    failure:
-      invalid: "ログイン情報が正しくありません"
-      unauthenticated: " "
-  attributes:
-    item: 
-    image: 商品画像
-    item_name: 商品名
-    description: 商品の説明
-    price: 販売価格
-    category_id: カテゴリー
-    condition_id: 商品の状態
-    payment_id: 配送料の負担
-    prefecture_id: 都道府県
-    derivery_day_id: 発送までの日数
-  attributes:
-    adress: 
-    post_code: 郵便番号
-    cities: 市区町村
-    housenumber: 番地
-    tel: 電話番号
-    prefecture_id: 都道府県
-    
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        first_name: お名前（姓）
+        last_name: お名前（名）
+        first_name_furigana : お名前カナ（姓）
+        last_name_furigana : お名前カナ（名）
+        birth_date: 生年月日
+      item:    
+        image: 商品画像
+        item_name: 商品名
+        description: 商品の説明
+        price: 販売価格
+        category_id: カテゴリー
+        condition_id: 商品の状態
+        payment_id: 配送料の負担
+        prefecture_id: 都道府県
+        derivery_day_id: 発送までの日数
+  activemodel:
+    attributes:
+      purchase_address:
+        post_code: 郵便番号
+        cities: 市区町村
+        housenumber: 番地
+        tel: 電話番号
+        prefecture_id: 都道府県
+      
