@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,except: [:index,:show]
-  before_action :item, only:[:show,:edit,:update,:destroy]
-  before_action :login_user, only:[:edit,:destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :item, only: [:show, :edit, :update, :destroy]
+  before_action :login_user, only: [:edit, :destroy]
 
   def index
-    @items=Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
   end
 
   def new
@@ -28,9 +28,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-     redirect_to item_path
+      redirect_to item_path
     else
-     render :edit,status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -39,10 +39,11 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  private 
+  private
 
   def item_params
-    params.require(:item).permit(:image,:item_name,:description,:category_id,:condition_id,:payment_id,:prefecture_id,:derivery_day_id,:price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :item_name, :description, :category_id, :condition_id, :payment_id, :prefecture_id,
+                                 :derivery_day_id, :price).merge(user_id: current_user.id)
   end
 
   def item
@@ -50,11 +51,10 @@ class ItemsController < ApplicationController
   end
 
   def login_user
-    if @item.user != current_user 
+    if @item.user != current_user
       redirect_to root_path
     elsif @item.purchase.present?
       redirect_to root_path
     end
   end
-
 end
