@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :purchase_address do
-    user_id        { Faker::Number.non_zero_digit }
-    item_id        { Faker::Number.non_zero_digit }
     post_code      { '123-4567' }
     cities         { '東京都' }
     build          { 'ビル' }
