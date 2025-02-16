@@ -1,9 +1,14 @@
 class Item < ApplicationRecord
   belongs_to :user
-  validates :image, presence: true
-  validates :item_name, presence: true,length: { maximum: 40 }
-  validates :description, presence: true,length: { maximum: 1000}
-  validates :price, presence: true,numericality: { greater_than_or_equal_to:300, less_than_or_equal_to: 9999999, only_integer: true}
+  has_one :purchase
+
+  with_options presence: true do
+  validates :image
+  validates :item_name, length: { maximum: 40 }
+  validates :description, length: { maximum: 1000 }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
+  end
+
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -13,10 +18,13 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :derivery_day
 
-  validates :category_id, numericality: { other_than: 1 , message: "を入力してください"}
-  validates :condition_id, numericality: { other_than: 1 , message: "を入力してください"}
-  validates :payment_id, numericality: { other_than: 1 , message: "を入力してください"}
-  validates :prefecture_id, numericality: { other_than: 1 , message: "を入力してください"}
-  validates :derivery_day_id, numericality: { other_than: 1 , message: "を入力してください"}
+
+with_options numericality: { other_than: 1, message: 'を入力してください' } do
+  validates :category_id 
+  validates :condition_id
+  validates :payment_id
+  validates :prefecture_id
+  validates :derivery_day_id
+end
 
 end
